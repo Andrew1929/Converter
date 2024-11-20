@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root{
+    --hedaer-background:#F5F5F5;
+    --logo-icon-and-buttons:#007BFF;
+    --buttons-hover:#0056B3;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--hedaer-background);
+    padding: 1.25rem 5%;
+}
+
+.header__logo{
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header__logo-icon{
+    font-size: 1.5rem;
+    color: var(--logo-icon-and-buttons);
+}
+
+.header__logo-text{
+    font-family: Nunito;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.header__nav-list{
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+.header__nav-item{
+    font-family: Nunito;
+    cursor: pointer;
+}
+
+.header__login-buttons{
+    display: flex;
+    gap: 1rem;
+    font-family: Nunito;
+    align-items: center;
+}
+
+.header__logIn-button,
+.header__signUp-button{
+    padding: .5rem;
+    border-radius: .25rem;
+    color: var(--hedaer-background);
+    cursor: pointer;
+    border: none;
+    background: var(--logo-icon-and-buttons);
+}
+
+.header__logIn-button:hover,
+.header__signUp-button:hover {
+    background: var(--buttons-hover);
+}
