@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root{
+    --logo-icon-and-buttons:#007BFF;
+    --buttons-hover:#0056B3;
+}
+
+.process-section{
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem 4rem 2rem;
+    gap: 3rem;
+}
+
+.process-section__title{
+    text-align: center;
+    font-family: Inter;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.process-section__steps-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.process-section__step{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 15rem;
+}
+
+.process-section__step-icon{
+    place-self: center;
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid var(--logo-icon-and-buttons);
+    border-radius: 50%;
+    padding: 2rem;
+}
+
+.process-section__step-description{
+    text-align: center;
+}
+
+.process-section__step-description{
+    font-size: 1.25rem;
+    font-family: Inter;
+}
