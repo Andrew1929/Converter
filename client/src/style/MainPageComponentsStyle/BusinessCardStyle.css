@@ -8,12 +8,11 @@
 .business-card-section{
     display: flex;
     justify-content: space-between;
-    height: 90vh;
 }
 
 #business-card-section__first-img{
     height: 15rem;
-    padding-top: 10rem;
+    padding: 10rem  0;
 }
 
 #business-card-section__second-img{
@@ -42,7 +41,33 @@
     line-height: 1.7rem;
 }
 
-.business-card-section__content-button{
+.business-card-section__file-upload{
+    position: relative;
+    overflow: hidden;
+    width: 20rem;
+    padding: .75rem 0;
+    place-self: center;
+    border-radius: 1rem;
+    border: 2px solid var(--logo-icon-and-buttons);
+    font-family: Inter;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.business-card-section__file-upload-input{
+    display: none;
+}
+
+.business-card-section__file-upload-label {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* .business-card-section__content-button{
     width: 20rem;
     padding: .75rem 0;
     place-self: center;
@@ -51,4 +76,4 @@
     font-family: Inter;
     font-size: 1.1rem;
     cursor: pointer;
-}
+} */

@@ -1,14 +1,17 @@
 import express from 'express';
 import config from 'config';
-import cors from 'cors'
+import cors from 'cors';
+import uploadRoutes from './routes/file.routes.js'
 
 const server = express();
 const Port = config.get('port');
 
 server.use(cors ({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:5173',
     credentials: true,
 }))
+
+server.use('/', uploadRoutes);
  
 function start () {
     try {

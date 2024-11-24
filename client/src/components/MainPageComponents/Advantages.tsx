@@ -10,7 +10,7 @@ export const Advantages : React.FC = () => {
 
             <div className="advantages-section__advantages-list">
                 <div className="advantages-section__advantage">
-                    <FontAwesomeIcon className='advantages-section__advantage-icon' icon={faGaugeHigh} />
+                    <FontAwesomeIcon  id='advantage__firs-icon' className='advantages-section__advantage-icon' icon={faGaugeHigh} />
 
                     <p className='advantages-section__advantage-title'>Швидкість конверсії</p>
 
@@ -18,7 +18,7 @@ export const Advantages : React.FC = () => {
                 </div>
 
                 <div className="advantages-section__advantage">
-                    <FontAwesomeIcon className='advantages-section__advantage-icon' icon={faFire} />
+                    <FontAwesomeIcon id='advantage__firs-icon' className='advantages-section__advantage-icon' icon={faFire} />
 
                     <p className='advantages-section__advantage-title'>Підтримка популярних форматів</p>
 
@@ -26,7 +26,7 @@ export const Advantages : React.FC = () => {
                 </div>
 
                 <div className="advantages-section__advantage">
-                    <FontAwesomeIcon className='advantages-section__advantage-icon' icon={faWandMagicSparkles} />
+                    <FontAwesomeIcon  id='advantage__firs-icon' className='advantages-section__advantage-icon' icon={faWandMagicSparkles} />
 
                     <p className='advantages-section__advantage-title'>Інтуїтивний інтерфейс</p>
 
@@ -34,7 +34,7 @@ export const Advantages : React.FC = () => {
                 </div>
 
                 <div className="advantages-section__advantage">
-                    <FontAwesomeIcon className='advantages-section__advantage-icon' icon={faShieldHalved} />
+                    <FontAwesomeIcon id='advantage__firs-icon' className='advantages-section__advantage-icon' icon={faShieldHalved} />
 
                     <p className='advantages-section__advantage-title'>Безпека даних</p>
 
@@ -42,7 +42,7 @@ export const Advantages : React.FC = () => {
                 </div>
 
                 <div className="advantages-section__advantage">
-                    <FontAwesomeIcon className='advantages-section__advantage-icon' icon={faCreativeCommonsNc}/>
+                    <FontAwesomeIcon id='advantage__firs-icon' className='advantages-section__advantage-icon' icon={faCreativeCommonsNc}/>
 
                     <p className='advantages-section__advantage-title'>Безкоштовне використання</p>
 
@@ -50,7 +50,7 @@ export const Advantages : React.FC = () => {
                 </div>
 
                 <div className="advantages-section__advantage">
-                    <FontAwesomeIcon className='advantages-section__advantage-icon' icon={faHouseLaptop} />
+                    <FontAwesomeIcon id='advantage__firs-icon' className='advantages-section__advantage-icon' icon={faHouseLaptop} />
 
                     <p className='advantages-section__advantage-title'>Доступність на всіх пристроях</p>
 
