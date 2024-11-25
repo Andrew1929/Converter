@@ -1,15 +1,58 @@
+import { FileFormatMenu } from './FileFormatMenu';
 import {  useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark, faFileVideo, faFileInvoice } from '@fortawesome/free-solid-svg-icons';
+import { faImage, faFilePdf, faFileZipper, faFileAudio, faFileCode } from '@fortawesome/free-regular-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import backgroundImg1 from '../../style/images/Group-21.png';
 import backgroundImg2 from '../../style/images/Group-22.png';
 import '../../style/MainPageComponentsStyle/BusinessCardStyle.css';
 
 export const BusinessCard : React.FC = () => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null)
+    const [selectedFileIcon, setSelectedFileIcon] = useState<IconProp | null>(null)
 
     const handleFileChange = (event : React.ChangeEvent<HTMLInputElement>) => {
         if(event.target.files && event.target.files.length > 0) {
-            setSelectedFile(event.target.files[0]);
+            const file = event.target.files[0];
+            setSelectedFile(file);
+            const icon = handleFileIcon(file.type); 
+            setSelectedFileIcon(icon);
         }
+    }
+
+    const handleFileIcon = (type: string): IconProp => {
+        if (type.startsWith("image/")) {
+            return faImage; 
+        } else if (type === "application/pdf") {
+            return faFilePdf;
+        } else if (type.startsWith("video/")) {
+            return faFileVideo; 
+        } else if (type.startsWith("audio/")) {
+            return faFileAudio; 
+        } else if (type === "application/zip" || type === "application/x-zip-compressed") {
+            return faFileZipper; 
+        } else if (type.startsWith("text/") || type === "application/json") {
+            return faFileCode; 
+        } else {
+            return faFileInvoice; 
+        }
+    };
+
+    function formatFileSize(size: number): string {
+        if (size < 1024) {
+            return `${size} b`; 
+        } else if (size < 1024 * 1024) {
+            return `${(size / 1024).toFixed(2)} kb`; 
+        } else if (size < 1024 * 1024 * 1024) {
+            return `${(size / (1024 * 1024)).toFixed(2)} mb`;
+        } else {
+            return `${(size / (1024 * 1024 * 1024)).toFixed(2)} gb`; 
+        }
+    }
+
+    const handleCloseForm = () => {
+        setSelectedFile(null);
     }
 
     const handleUpdate = async () => {
@@ -53,8 +96,24 @@ export const BusinessCard : React.FC = () => {
             <img id='business-card-section__first-img' src={backgroundImg1} alt="" />
 
             {selectedFile ? (  
-                <div> 
-                    
+                <div className='business-card-section__file-info'> 
+                    <div className="business-card-section__file-info-container">
+                        <FontAwesomeIcon className="business-card-section__file-icon" icon={selectedFileIcon!} />
+
+                        <p className='business-card-section__file-name'>{selectedFile.name}</p>
+
+                        <p className='business-card-section__file-info--text'>в</p>
+
+                        <FileFormatMenu/>
+
+                        <p className='business-card-section__file-info--text'>{formatFileSize(selectedFile.size)}</p>
+
+                        <button onClick={handleCloseForm} className='business-card-section__close-btn'>
+                            <FontAwesomeIcon  className='business-card-section__close-btn--icon' icon={faXmark} />
+                        </button>
+                    </div>
+
+                    <button onClick={handleUpdate} className='business-card-section__converter-btn'>Конвертувати</button>
                 </div>
             ) : (
                 <div className="business-card-section__content">

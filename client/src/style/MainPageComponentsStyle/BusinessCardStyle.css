@@ -3,6 +3,7 @@
 :root{
     --logo-icon-and-buttons:#007BFF;
     --buttons-hover:#0056B3;
+    --file-info-background:#DCDCDC;
 }
 
 .business-card-section{
@@ -18,6 +19,63 @@
 #business-card-section__second-img{
     height: 18rem;
     padding:9rem 0rem 0 0;
+}
+
+.business-card-section__file-info{
+    padding:12rem 8rem 0 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.business-card-section__file-info-container{
+    display: flex;
+    background: var(--file-info-background);
+    padding: .75rem 2rem;
+    border-radius: .25rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.business-card-section__file-icon{
+    color: var(--logo-icon-and-buttons);
+}
+
+.business-card-section__file-info--text,
+.business-card-section__file-name{
+    font-family: Inter;
+}
+
+.business-card-section__close-btn{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.business-card-section__close-btn--icon{
+    color: var(--logo-icon-and-buttons);
+    font-size: 1.25rem;
+}
+
+.business-card-section__close-btn--icon:hover{
+    color: var(--buttons-hover);
+}
+
+.business-card-section__converter-btn{
+    width: 20rem;
+    font-family: Inter;
+    padding: .75rem 0;
+    color: var(--logo-icon-and-buttons);
+    cursor: pointer;
+    border-radius: .5rem;
+    place-self: center;
+    border: 2px solid var(--logo-icon-and-buttons);
+}
+
+.business-card-section__converter-btn:hover{
+    border: 2px solid var(--buttons-hover);
+    color: var(--buttons-hover);
 }
 
 .business-card-section__content{
@@ -66,14 +124,3 @@
     height: 100%;
     cursor: pointer;
 }
-
-/* .business-card-section__content-button{
-    width: 20rem;
-    padding: .75rem 0;
-    place-self: center;
-    border-radius: 1rem;
-    border: 2px solid var(--logo-icon-and-buttons);
-    font-family: Inter;
-    font-size: 1.1rem;
-    cursor: pointer;
-} */
