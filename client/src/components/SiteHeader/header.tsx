@@ -1,9 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faFile} from '@fortawesome/free-solid-svg-icons';
-import {faUser} from '@fortawesome/free-regular-svg-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/index.ts';
+import { openLoginModal, openRegisterModel} from '../../store/modalSlice';
+import { LoginForm } from '../AuthorizationComponents/LoginForm.tsx';
+import { RegisterForm } from '../AuthorizationComponents/RegisterForm';
 import '../../style/headerComponentStyle/headerStyle.css';
 
 export const Header : React.FC = () => {
+    const dispatch = useDispatch();
+    const { isLoginFormOpen, isRegisterFormOpen} = useSelector((state : RootState) => state.modal);
+
     return (
         <header className="header">
             <div className="header__logo">
@@ -23,12 +30,13 @@ export const Header : React.FC = () => {
             </nav>
 
             <div className="header__login-buttons">
-                <button className="header__logIn-button">Увійти</button>
+                <button onClick={() => dispatch(openLoginModal())} className="header__logIn-button">Увійти</button>
 
-                <button className="header__signUp-button">Створити</button>
-
-                <FontAwesomeIcon className='header__user-icon' icon={faUser} />
+                <button onClick={() => dispatch(openRegisterModel())} className="header__signUp-button">Створити</button>
             </div>
+
+            {isLoginFormOpen && <LoginForm />}
+            {isRegisterFormOpen && <RegisterForm />}
         </header>
     )
 }
