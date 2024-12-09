@@ -11,10 +11,10 @@ router.post(
     '/register',
 
     [
+        check('username','Wrong username').isLength({min:3}), 
         check('email', 'Wrong email').isEmail(),
         check('password', 'Wrong password')
           .isLength({ min: 6 }),
-        check('username','Wrong username').isLength({min:3}) 
     ],
 
     async (req, res) => {

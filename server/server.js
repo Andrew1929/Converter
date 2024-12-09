@@ -13,6 +13,8 @@ server.use(cors ({
     credentials: true,
 }))
 
+server.use(express.json({ extended: true}))
+
 server.use('/', uploadRoutes);
 server.use('/', authRoutes);
  
