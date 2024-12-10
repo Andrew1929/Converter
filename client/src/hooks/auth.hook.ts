@@ -1,8 +1,13 @@
-import { useCallback, useState } from "react"
+import { useCallback, useState, useEffect } from "react";
+
+const storageName = 'userData'
 
 export const useAuth = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<null | String>(null);
+    const [token , setToken ] = useState(null)
+    const [ready, setReady] = useState(false)
+    const [userId , setUserId ] = useState(null)
 
     const request = useCallback(async ( 
         url : string, 
@@ -33,5 +38,31 @@ export const useAuth = () => {
         }
     }, [])
 
-    return {loading, request, error}
+    const login = useCallback( (jwtKey : any, Id: any ) => {
+        setToken(jwtKey)
+        setUserId(Id)
+
+        localStorage.setItem(storageName,JSON.stringify({
+            userId: Id , token: jwtKey
+        }))
+    } , [])
+
+    const logout = useCallback(() => {
+        setToken(null)
+        setUserId(null)
+        localStorage.removeItem(storageName)
+    } , [])
+
+    useEffect(() => {
+        const storedData = localStorage.getItem(storageName);
+        if (storedData) {
+            const data = JSON.parse(storedData);
+            if (data && data.token) {
+                login(data.token, data.userId);
+            }
+        }
+        setReady(true);
+    }, [login]);
+
+   return { loading, request, error, token, userId, login, logout, ready };
 }

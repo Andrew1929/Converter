@@ -51,7 +51,7 @@ router.post(
 )
 
 router.post(
-    'login',
+    '/login',
 
     [
         check('email', 'Wrong email').normalizeEmail().isEmail(),
