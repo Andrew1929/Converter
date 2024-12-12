@@ -1,12 +1,13 @@
 import { useAuth } from "../../hooks/auth.hook";
-import { AuthContext } from "../../contex/authContex.ts";
-import { useContext } from "react";
+import { AppDispatch } from "../../store/store";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { login } from "../../store/authSlice";
 import { closeLoginModal } from "../../store/modalSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faAt, faLock, faXmark } from '@fortawesome/free-solid-svg-icons';
 import "../../style/AuthorizationComponentsStyle/LoginFormStyle.css";
+
 
 type Inputs = {
     email: string,
@@ -14,25 +15,26 @@ type Inputs = {
 };
 
 export const LoginForm = () => {
-    const auth = useContext(AuthContext)
-    const dispatch = useDispatch();
+    const dispatch : AppDispatch = useDispatch();
     const {register ,handleSubmit} = useForm<Inputs>();
-    const {request, error} = useAuth();
+    const {request, saveTokenToStorage} = useAuth();
 
     const SubmitHandler : SubmitHandler<Inputs> = async (data) => {
         try {
+            
             const response = await request(
                 'http://localhost:5000/login', 
                 'POST', 
                 {email : data.email, password : data.password}
             )
 
-            // auth.login(response.token, response.userId)
-            // auth.userId(response.userId)
-
-            if (!error) {
+            if (response?.token && response?.userId) {
+                saveTokenToStorage(response.token, response.userId);
+                dispatch(login({ token: response.token, userId: response.userId }));
+                dispatch(closeLoginModal());
                 alert('Вхід успішний');
-                dispatch(closeLoginModal())
+            } else {
+                alert('Щось пішло не так');
             }
         } catch (error) {}
     }  

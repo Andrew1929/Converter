@@ -11,7 +11,7 @@ export const useAuth = () => {
 
     const request = useCallback(async ( 
         url : string, 
-        method : string = "GET", 
+        method : string = "", 
         body: any| null = null,
         headers : any = {} 
     ) => {
@@ -38,13 +38,15 @@ export const useAuth = () => {
         }
     }, [])
 
-    const login = useCallback( (jwtKey : any, Id: any ) => {
+    const saveTokenToStorage = useCallback( (jwtKey : any, Id: any ) => {
         setToken(jwtKey)
         setUserId(Id)
 
         localStorage.setItem(storageName,JSON.stringify({
             userId: Id , token: jwtKey
         }))
+
+        console.log('LocalStorage updated:', localStorage.getItem(storageName));
     } , [])
 
     const logout = useCallback(() => {
@@ -58,11 +60,11 @@ export const useAuth = () => {
         if (storedData) {
             const data = JSON.parse(storedData);
             if (data && data.token) {
-                login(data.token, data.userId);
+                saveTokenToStorage(data.token, data.userId);
             }
         }
         setReady(true);
-    }, [login]);
+    }, [saveTokenToStorage]);
 
-   return { loading, request, error, token, userId, login, logout, ready };
+   return { loading, request, error, token, userId, saveTokenToStorage, logout, ready };
 }

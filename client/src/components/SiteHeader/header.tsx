@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faFile} from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/index.ts';
+import { RootState } from '../../store/store.ts';
 import { openLoginModal, openRegisterModel} from '../../store/modalSlice';
 import { LoginForm } from '../AuthorizationComponents/LoginForm.tsx';
 import { RegisterForm } from '../AuthorizationComponents/RegisterForm';
