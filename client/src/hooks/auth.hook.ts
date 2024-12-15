@@ -45,8 +45,6 @@ export const useAuth = () => {
         localStorage.setItem(storageName,JSON.stringify({
             userId: Id , token: jwtKey
         }))
-
-        console.log('LocalStorage updated:', localStorage.getItem(storageName));
     } , [])
 
     const logout = useCallback(() => {
