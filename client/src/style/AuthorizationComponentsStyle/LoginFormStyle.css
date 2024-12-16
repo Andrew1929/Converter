@@ -1,1 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.login-form{
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    place-self: center;
+    gap: 1rem;
+    background: var(--register-form);
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: .5rem;
+    justify-content: center;
+}
+
+.login-form__title{
+    font-family: Inter;
+    text-align: center;
+    margin-bottom: .5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.login-form__close-btn{
+    position: absolute;
+    margin-top: -11rem;
+    margin-left: 26.25rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.login-form__data-field{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.login-form__submit-btn{
+    background: var(--data-field__icon);
+    color: var(--register-form);
+    padding: .5rem 0;
+    border-radius: .5rem;
+    width: 15rem;
+    place-self: center;
+    font-family: Inter;
+    margin-top: .5rem;
+    border: none;
+}

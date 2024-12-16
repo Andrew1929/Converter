@@ -84,7 +84,8 @@ export const BusinessCard : React.FC = () => {
             link.download = selectedFile.name.replace(/\.[^/.]+$/, '.png');
             link.click();
             window.URL.revokeObjectURL(url);
-            alert('Файл успішно конвертовано та завантажено!')
+            alert('Файл успішно конвертовано та завантажено!');
+            handleCloseForm();
         } catch (error) {
             console.error('Error:', error);
             alert('Щось пішло не так!');

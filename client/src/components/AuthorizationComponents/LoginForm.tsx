@@ -40,28 +40,32 @@ export const LoginForm = () => {
     }  
 
     return (
-        <form className="login-form" onSubmit={handleSubmit(SubmitHandler)}>
-            <button onClick={() => dispatch(closeLoginModal())} className="login-form__close-btn">
-                <FontAwesomeIcon className="close-btn__icon" icon={faXmark} />
-            </button>
+        <div className="form__backdrop">
+            <form className="login-form" onSubmit={handleSubmit(SubmitHandler)}>
+                <p className="login-form__title">Увійти в акаунт</p>
 
-            <div className="login-form__email-field">
-                <FontAwesomeIcon className="email-field__icon" icon={faAt} />
+                <button onClick={() => dispatch(closeLoginModal())} className="login-form__close-btn">
+                    <FontAwesomeIcon className="close-btn__icon" icon={faXmark} />
+                </button>
 
-                <input className="data-field__input"  {...register('email')} required type="email" />
+                <div className="login-form__data-field">
+                    <FontAwesomeIcon className="data-field__icon" icon={faAt} />
 
-                <label className="data-field__label" htmlFor="">електронна пошта</label>
-            </div>
+                    <input className="data-field__input"  {...register('email')} required type="email" />
 
-            <div className="login-form__data-field">
-                <FontAwesomeIcon className="data-field__icon" icon={faLock} />
+                    <label className="data-field__label" htmlFor="">електронна пошта</label>
+                </div>
 
-                <input className="data-field__input" {...register('password')} required type="password" />
+                <div className="login-form__data-field">
+                    <FontAwesomeIcon className="data-field__icon" icon={faLock} />
 
-                <label className="data-field__label" htmlFor="">пароль</label>
-            </div>
+                    <input className="data-field__input" {...register('password')} required type="password" />
 
-            <button type="submit" className="login-form__submit-btn">Увійти</button>
-        </form>
+                    <label className="data-field__label" htmlFor="">пароль</label>
+                </div>
+
+                <button type="submit" className="login-form__submit-btn">Увійти</button>
+            </form>
+        </div>
     )
 }

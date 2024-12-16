@@ -32,37 +32,40 @@ export const RegisterForm = () => {
     }  
 
     return (
-        <form className="register-form" onSubmit={handleSubmit(SubmitHandler)}>
-            <button onClick={() => dispatch(closeRegisterModal())} className="register-form__close-btn">
-                <FontAwesomeIcon className="close-btn__icon" icon={faXmark} />
-            </button>
-            
+        <div className="form__backdrop">
+            <form className="register-form" onSubmit={handleSubmit(SubmitHandler)}>
+                <p className="register-form__title">Створити акаунт</p>
 
-            <div className="register-form__data-field">
-                <FontAwesomeIcon className="data-field__icon" icon={faPenNib} />
+                <button onClick={() => dispatch(closeRegisterModal())} className="register-form__close-btn">
+                    <FontAwesomeIcon className="close-btn__icon" icon={faXmark} />
+                </button>
 
-                <input className="data-field__input" {...register('username')} required type="text" />
+                <div className="register-form__data-field">
+                    <FontAwesomeIcon className="data-field__icon" icon={faPenNib} />
 
-                <label className="data-field__label" htmlFor="">ім'я користувача</label>
-            </div>
+                    <input className="data-field__input" {...register('username')} required type="text" />
 
-            <div className="register-form__email-field">
-                <FontAwesomeIcon className="email-field__icon" icon={faAt} />
+                    <label className="data-field__label" htmlFor="">ім'я користувача</label>
+                </div>
 
-                <input className="data-field__input" {...register('email')} required  type="email" />
+                <div className="register-form__data-field">
+                    <FontAwesomeIcon className="data-field__icon" icon={faAt} />
 
-                <label className="data-field__label" htmlFor="">електронна пошта</label>
-            </div>
+                    <input className="data-field__input" {...register('email')} required  type="email" />
 
-            <div className="register-form__data-field">
-                <FontAwesomeIcon className="data-field__icon" icon={faLock} />
+                    <label className="data-field__label" htmlFor="">електронна пошта</label>
+                </div>
 
-                <input className="data-field__input" {...register('password')} required  type="password" />
+                <div className="register-form__data-field">
+                    <FontAwesomeIcon className="data-field__icon" icon={faLock} />
 
-                <label className="data-field__label" htmlFor="">пароль</label>
-            </div>
+                    <input className="data-field__input" {...register('password')} required  type="password" />
 
-            <button type="submit" className="register-form__submit-btn">Створити</button>
-        </form>
+                    <label className="data-field__label" htmlFor="">пароль</label>
+                </div>
+
+                <button type="submit" className="register-form__submit-btn">Створити</button>
+            </form>
+        </div>
     )
 }
