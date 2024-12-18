@@ -18,7 +18,7 @@ const upload = multer({ storage });
 
 router.post(
     '/upload-file',
-    upload.single('file'), 
+    upload.array('file'), 
     converter    
 );
 

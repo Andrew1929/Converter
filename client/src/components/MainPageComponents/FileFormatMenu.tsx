@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import '../../style/MainPageComponentsStyle/FileFormatMenuStyle.css';
 
-export const FileFormatMenu: React.FC = () => {
+export const FileFormatMenu: React.FC <{onSelect: (format: string) => void}> = ({ onSelect }) => {
     const selectRef = useRef<HTMLDivElement>(null);
     const menuRef = useRef<HTMLUListElement>(null);
     const selectedRef = useRef<HTMLSpanElement>(null);
@@ -17,9 +17,10 @@ export const FileFormatMenu: React.FC = () => {
         if (selectedRef.current) {
             selectedRef.current.textContent = format;
         }
-        toggleMenu(); // Закрити меню після вибору
+        onSelect(format); 
+        toggleMenu();
     };
-
+    
     const formats = [
         // Фото
         'jpg', 'png', 'gif', 'bmp', 'webp', 'tiff', 'heic',

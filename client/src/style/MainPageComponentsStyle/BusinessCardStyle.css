@@ -22,14 +22,39 @@
 }
 
 .business-card-section__file-info{
-    padding:12rem 8rem 0 3rem;
+    padding:7rem 8rem 0 3rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     width: 100%;
 }
 
+.business-card-section__title-and-description{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.business-card-section__title{
+    font-family: Inter;
+    font-size: 2rem;
+}
+
+.business-card-section__description{
+    font-family: Inter;
+    color: var(--advantage-description);
+}
+
 .business-card-section__file-info-container{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    max-height: 10rem;
+    overflow: auto;
+}
+
+.file-info-container{
     display: flex;
     background: var(--file-info-background);
     padding: .75rem 2rem;
@@ -38,31 +63,38 @@
     justify-content: space-between;
 }
 
-.business-card-section__file-icon{
+.file-info-container__icon{
     color: var(--logo-icon-and-buttons);
 }
 
-.business-card-section__file-info--text,
-.business-card-section__file-name{
+.file-info-container__name{
+    width: 20rem;
+    white-space: nowrap;            
+    overflow: hidden;               
+    text-overflow: ellipsis; 
+}
+
+.file-info-container__text,
+.file-info-container__name{
     font-family: Inter;
 }
 
-.business-card-section__close-btn{
+.file-info-container__close-btn{
     border: none;
     background: none;
     cursor: pointer;
 }
 
-.business-card-section__close-btn--icon{
+.file-info-container__close-btn--icon{
     color: var(--logo-icon-and-buttons);
     font-size: 1.25rem;
 }
 
-.business-card-section__close-btn--icon:hover{
+.file-info-container__close-btn--icon:hover{
     color: var(--buttons-hover);
 }
 
-.business-card-section__converter-btn{
+.file-info-container__converter-btn{
     width: 20rem;
     font-family: Inter;
     padding: .75rem 0;
@@ -73,7 +105,7 @@
     border: 2px solid var(--logo-icon-and-buttons);
 }
 
-.business-card-section__converter-btn:hover{
+.file-info-container__converter-btn:hover{
     border: 2px solid var(--buttons-hover);
     color: var(--buttons-hover);
 }
