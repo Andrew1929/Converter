@@ -22,11 +22,15 @@
     background: var(--white);
     color: var(--black);
     padding: .25rem;
-    width: 3rem;
+    min-width: 3rem;
     border-radius: .2rem;
     align-items: center;
     font-family: Inter;
     border: 1px solid var(--black);
+}
+
+.dropdown-menu--global {
+    place-self: center;
 }
 
 .dropdown-menu-link{

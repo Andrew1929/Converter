@@ -1,57 +1,50 @@
-import fs from "fs"; // Імпортуємо звичайний модуль fs
+import fs from "fs"; 
 import sharp from "sharp";
 
 export const converter = async (req, res) => {
     try {
-        if (!req.files || req.files.length === 0) {
-            return res.status(400).json({ message: "Файли обов’язкові для завантаження" });
+        if (!req.file) {
+            return res.status(400).json({ message: "Файл обов’язковий для завантаження" });
         }
 
-        const selectedFormats = req.body.format; // Формати, передані із фронтенду
+        const inputFilePath = req.file.path; // Шлях до завантаженого файлу
+        const selectedFormat = req.body.format; // Формат, переданий із фронтенду
 
-        if (!selectedFormats || selectedFormats.length !== req.files.length) {
-            return res.status(400).json({ message: "Необхідно вибрати формат для кожного файлу" });
+        if (!selectedFormat) {
+            return res.status(400).json({ message: "Необхідно вибрати формат" });
         }
 
-        // Проходимо по кожному файлу та обробляємо
-        const downloadLinks = [];
+        const outputFilePath = inputFilePath.replace(/\.[^/.]+$/, `.${selectedFormat}`); // Використовуємо вибраний формат
 
-        for (let i = 0; i < req.files.length; i++) {
-            const file = req.files[i];
-            const selectedFormat = selectedFormats[i];
+        // Виконання конвертації
+        await sharp(inputFilePath)
+            .toFormat(selectedFormat)
+            .toFile(outputFilePath);
 
-            const inputFilePath = file.path; // Шлях до завантаженого файлу
-            const outputFilePath = inputFilePath.replace(/\.[^/.]+$/, `.${selectedFormat}`); // Використовуємо вибраний формат
+        // Відправка результату назад клієнту
+        res.download(outputFilePath, async (err) => {
+            if (err) {
+                console.error("Помилка при завантаженні файлу:", err);
+                return res.status(500).json({ message: "Помилка при завантаженні файлу" });
+            }
 
-            // Виконання конвертації
-            await sharp(inputFilePath)
-                .toFormat(selectedFormat)
-                .toFile(outputFilePath);
-
-            // Додаємо посилання на завантаження файлу
-            downloadLinks.push(outputFilePath);
-        }
-
-        // Відправляємо файли на клієнт
-        res.zip({
-            files: downloadLinks.map((file) => ({ path: file, name: file.split('/').pop() })),
-            saveTo: './downloads/converted-files.zip',
-            onZipComplete: () => {
-                // Після завершення архівації видаляємо тимчасові файли
-                downloadLinks.forEach((filePath) => {
-                    fs.unlinkSync(filePath);
-                });
-
-                // Архів готовий, відправляємо його
-                res.download('./downloads/converted-files.zip', 'converted-files.zip', (err) => {
-                    if (err) {
-                        console.error("Помилка при завантаженні файлу:", err);
-                        return res.status(500).json({ message: "Помилка при завантаженні файлу" });
+            try {
+                // Переконаємось, що файли не використовуються
+                setTimeout(async () => {
+                    try {
+                        // Видалення тимчасових файлів після того, як файл завантажений
+                        if (fs.existsSync(inputFilePath)) {
+                            fs.unlinkSync(inputFilePath);
+                        }
+                        if (fs.existsSync(outputFilePath)) {
+                            fs.unlinkSync(outputFilePath);
+                        }
+                    } catch (unlinkError) {
+                        console.error("Помилка при видаленні файлів:", unlinkError.message);
                     }
-
-                    // Видалення архіву після завантаження
-                    fs.unlinkSync('./downloads/converted-files.zip');
-                });
+                }, 500); // Затримка перед видаленням файлів
+            } catch (unlinkError) {
+                console.error("Помилка при видаленні файлів:", unlinkError.message);
             }
         });
     } catch (error) {
@@ -59,5 +52,3 @@ export const converter = async (req, res) => {
         res.status(500).json({ message: "Щось пішло не так" });
     }
 };
-
-

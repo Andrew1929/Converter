@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import '../../style/MainPageComponentsStyle/FileFormatMenuStyle.css';
 
-export const FileFormatMenu: React.FC <{onSelect: (format: string) => void}> = ({ onSelect }) => {
+export const FileFormatMenu: React.FC<{ onSelect: (format: string) => void }> = ({ onSelect }) => {
     const selectRef = useRef<HTMLDivElement>(null);
     const menuRef = useRef<HTMLUListElement>(null);
     const selectedRef = useRef<HTMLSpanElement>(null);
@@ -17,25 +17,12 @@ export const FileFormatMenu: React.FC <{onSelect: (format: string) => void}> = (
         if (selectedRef.current) {
             selectedRef.current.textContent = format;
         }
-        onSelect(format); 
+        onSelect(format); // Передати обраний формат наверх
         toggleMenu();
     };
-    
+
     const formats = [
-        // Фото
-        'jpg', 'png', 'gif', 'bmp', 'webp', 'tiff', 'heic',
-        // Документи
-        'pdf', 'doc', 'docx', 'odt', 'rtf', 'txt', 'xls', 'xlsx', 'ppt', 'pptx',
-        // Векторні зображення
-        'svg', 'ai', 'eps', 'cdr', 'dxf',
-        // Архіви
-        'zip', 'rar', '7z', 'tar', 'gz',
-        // Аудіо
-        'mp3', 'wav', 'aac', 'flac', 'ogg',
-        // Відео
-        'mp4', 'avi', 'mov', 'mkv', 'wmv', 'webm',
-        // Інші
-        'json', 'xml', 'csv',
+        'jpg', 'png', 'gif', 'bmp', 'webp', 'tiff', 'heic', 'pdf', 'doc', 'docx', // формати
     ];
 
     return (
