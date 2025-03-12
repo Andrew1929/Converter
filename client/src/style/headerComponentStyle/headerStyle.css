@@ -40,12 +40,16 @@
 .header__nav-list{
     display: flex;
     list-style: none;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .header__nav-item{
     font-family: Nunito;
     cursor: pointer;
+}
+
+.header__nav-item:hover{
+    text-decoration: underline var(--buttons-hover);
 }
 
 .header__login-buttons{

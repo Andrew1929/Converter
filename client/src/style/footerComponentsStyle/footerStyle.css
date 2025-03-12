@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--hedaer-background);
+    padding: 1.25rem 5% 2rem 5%;
+}
+
+.footer__content{
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.content__site-map,
+.content__social-media{
+    display: grid;
+    gap: 1rem;
+    font-family: Nunito;
+}
+
+.site-map__list,
+.social-media__list{
+    list-style: none;
+    text-align: center;
+    display: grid;
+    gap: .5rem;
+}
+
+.site-map__item,
+.social-media__item{
+    cursor: pointer;
+}
+
+.site-map__item:hover,
+.social-media__item:hover{
+    text-decoration: underline var( --buttons-hover);
+}
