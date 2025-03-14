@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../../style/footerComponentsStyle/footerStyle.css';
 
 export const Footer : React.FC = () => {
@@ -8,9 +9,17 @@ export const Footer : React.FC = () => {
                     <h3 className='site-map__title'>Карта сайту</h3>
                     
                     <ul className='site-map__list'>
-                        <li className='site-map__item'>Головна</li>
-                        <li className='site-map__item'>Про нас</li>
-                        <li className='site-map__item'>Контакти</li>
+                        <Link className="site-map__link" to='/головна'>
+                            <li className='site-map__item'>Головна</li>
+                        </Link>
+
+                        <Link className="site-map__link" to='/про_нас'>
+                            <li className='site-map__item'>Про нас</li>
+                        </Link>
+
+                        <Link className="site-map__link" to='/контакти'>
+                            <li className='site-map__item'>Контакти</li>
+                        </Link>
                     </ul>
                 </div>
                 

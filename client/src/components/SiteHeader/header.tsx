@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
@@ -23,19 +24,27 @@ export const Header : React.FC = () => {
             { isAuthenticated ? (
                 <>
                     <div className="header__logo">
-                        <FontAwesomeIcon className='header__logo-icon' icon={faFile} />
+                        <Link className="header__logo-link" to='/головна'>
+                            <FontAwesomeIcon className='header__logo-icon' icon={faFile} />
 
-                        <p className='header__logo-text'>Конвентор</p>
+                            <p className='header__logo-text'>Конвентор</p>
+                        </Link>
                     </div>
                     
                     
                     <nav className="header__nav">
                         <ul className="header__nav-list">
-                            <li className="header__nav-item">Головна</li>
+                            <Link className="header__nav-link" to='/головна'>
+                                <li className="header__nav-item">Головна</li>
+                            </Link>
 
-                            <li className="header__nav-item">Про нас</li>
+                            <Link className="header__nav-link" to='/про_нас'>
+                                <li className="header__nav-item">Про нас</li>
+                            </Link>
 
-                            <li className="header__nav-item">Контакти</li>
+                            <Link className="header__nav-link" to='/контакти'>
+                                <li className="header__nav-item">Контакти</li>
+                            </Link>
                         </ul>
                     </nav>
 
@@ -48,18 +57,26 @@ export const Header : React.FC = () => {
             ) : (
                 <>
                     <div className="header__logo">
-                        <FontAwesomeIcon className='header__logo-icon' icon={faFile} />
+                        <Link className="header__logo-link" to='/головна'>
+                            <FontAwesomeIcon className='header__logo-icon' icon={faFile} />
 
-                        <p className='header__logo-text'>Конвентор</p>
+                            <p className='header__logo-text'>Конвентор</p>
+                        </Link>
                     </div>
 
                     <nav className="header__nav">
                         <ul className="header__nav-list">
-                            <li className="header__nav-item">Головна</li>
+                            <Link className="header__nav-link" to='/головна'>
+                                <li className="header__nav-item">Головна</li>
+                            </Link>
 
-                            <li className="header__nav-item">Про нас</li>
+                            <Link className="header__nav-link" to='/про_нас'>
+                                <li className="header__nav-item">Про нас</li>
+                            </Link>
 
-                            <li className="header__nav-item">Контакти</li>
+                            <Link className="header__nav-link" to='/контакти'>
+                                <li className="header__nav-item">Контакти</li>
+                            </Link>
                         </ul>
                     </nav>
 

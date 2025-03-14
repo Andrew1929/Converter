@@ -45,4 +45,5 @@
     font-family: Inter;
     margin-top: .5rem;
     border: none;
+    cursor: pointer;
 }

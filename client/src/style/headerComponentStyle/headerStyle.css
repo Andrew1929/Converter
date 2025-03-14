@@ -19,11 +19,13 @@
     padding: 1.25rem 5%;
 }
 
-.header__logo{
+.header__logo-link{
     display: flex;
     gap: .5rem;
     align-items: center;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
 }
 
 .header__logo-icon{
@@ -41,6 +43,11 @@
     display: flex;
     list-style: none;
     gap: 1.5rem;
+}
+
+.header__nav-link{
+    text-decoration: none;
+    color: black;
 }
 
 .header__nav-item{
