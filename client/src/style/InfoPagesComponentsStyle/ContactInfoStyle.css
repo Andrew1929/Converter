@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.contact-info__content{
+    font-family: Inter;
+    text-align: center;
+    padding: 5rem 0;
+    display: grid;
+    height: calc(100vh - 25.5rem);
+}
+
+.content__subtitle{
+    font-size: 1.25rem;
+}
+
+.content__info-list{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
