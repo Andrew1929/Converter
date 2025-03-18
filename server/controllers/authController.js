@@ -64,7 +64,7 @@ export const loginUser = async (req, res) => {
             config.get('jwtKey'),
             { expiresIn: '1h' }
         )
-        res.json({token, userId: user.id})
+        res.json({token, userId: user.id, userName: user.username})
     } catch (error) {
         res.status(500).json({message: `Щось пішло не так: ${error.message}`});
     }

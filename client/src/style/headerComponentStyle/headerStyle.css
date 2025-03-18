@@ -80,3 +80,24 @@
 .header__signUp-button:hover {
     background: var(--buttons-hover);
 }
+
+.header__user-panel{
+    display: flex;
+
+}
+
+.user-panel__icon{
+    cursor: pointer;
+    padding: .5rem;
+    border: .1rem solid black;
+    border-radius: 50%;
+}
+
+.user-panel__icon:hover {
+   border: .1rem solid var(--buttons-hover);
+   color: var(--buttons-hover);
+}
+
+.user-panel__username{
+    color: black;
+}

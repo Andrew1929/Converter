@@ -13,11 +13,11 @@ import '../../style/headerComponentStyle/headerStyle.css';
 export const Header : React.FC = () => {
     const dispatch = useDispatch();
     const { isLoginFormOpen, isRegisterFormOpen} = useSelector((state : RootState) => state.modal);
-    const { isAuthenticated, userId } = useSelector((state: RootState) => state.auth);
+    const { isAuthenticated, userName } = useSelector((state: RootState) => state.auth);
     
     const logoutHandler = () => {
         dispatch(logout());
-        localStorage.removeItem('token');
+         
     }
     return (
         <header className="header">
@@ -49,9 +49,11 @@ export const Header : React.FC = () => {
                     </nav>
 
                     <div onClick={() => logoutHandler()} className="header__user-panel">
-                        <FontAwesomeIcon className='user-panel__icon' icon={faUser} />
+                        <Link className="header__nav-link" to='/профіль'>
+                            <FontAwesomeIcon className='user-panel__icon' icon={faUser} />
+                        </Link>
                         
-                        <p className='user-panel__username'>{userId}</p>
+                        <p className='user-panel__username'>{userName}</p>
                     </div>
                 </>
             ) : (
